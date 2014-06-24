@@ -1,4 +1,5 @@
-bika.batches
-============
+Bika Batches
+========
 
-Bika LIMS extension - extends batches
+Plone extension for Bika LIMS: Extends batches.
+
