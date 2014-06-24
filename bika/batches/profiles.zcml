@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="bika.batches">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Bika Analytica"
+      directory="profiles/default"
+      description='Extension profile for Analytica'
+      provides="Products.GenericSetup.interfaces.EXTENSION"/>
+
+  <genericsetup:importStep
+      name="setupAnalyticaVarious"
+      title="Bika Analytica: Various"
+      description="Final site configuration actions"
+      handler="bika.batches.setuphandlers.setupAnalyticaVarious">
+    <depends name="content" />
+    <depends name="toolset" />
+  </genericsetup:importStep>
+
+</configure>
