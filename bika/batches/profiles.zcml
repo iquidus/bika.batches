@@ -5,16 +5,16 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Bika Analytica"
+      title="Bika Batches"
       directory="profiles/default"
-      description='Extension profile for Analytica'
+      description='Extends batches for Bika LIMS'
       provides="Products.GenericSetup.interfaces.EXTENSION"/>
 
   <genericsetup:importStep
-      name="setupAnalyticaVarious"
-      title="Bika Analytica: Various"
+      name="setupBatchesVarious"
+      title="Bika Batches: Various"
       description="Final site configuration actions"
-      handler="bika.batches.setuphandlers.setupAnalyticaVarious">
+      handler="bika.batches.setuphandlers.setupBatchesVarious">
     <depends name="content" />
     <depends name="toolset" />
   </genericsetup:importStep>

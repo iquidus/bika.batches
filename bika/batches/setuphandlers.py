@@ -7,7 +7,7 @@ class Empty:
     pass
 
 
-def setupAnalyticaVarious(context):
+def setupBatchesVarious(context):
     """ Setup Bika site structure """
 
     if context.readDataFile('bika.batches.txt') is None:
