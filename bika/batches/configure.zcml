@@ -11,15 +11,11 @@
   <includeDependencies package="." />
 
   <five:registerPackage package="." initialize=".initialize" />
-
+  
   <include file="permissions.zcml" />
-
   <include package=".content"/>
-  <include package=".controlpanel"/>
   <include package=".extenders"/>
   <include package=".browser"/>
-  <include package=".static"/>
-  <include package=".setupdata"/>
-
   <include file="profiles.zcml" />
 </configure>
+
