@@ -87,7 +87,8 @@ class BatchSchemaExtender(object):
         to_insert = [{'name': 'Contact', 'before': 'ClientBatchID'},
             {'name': 'InvoiceContact', 'before': 'ClientBatchID'},
             {'name': 'ClientRef', 'before': 'ClientBatchID'},
-            {'name': 'Information', 'before': 'BatchLabels'}]
+            {'name': 'Information', 'before': 'BatchLabels'},
+            {'name': 'BatchDate', 'before': 'BatchLabels'}]
         for field in to_insert:
             name = field['name']
             if name in default:
@@ -119,13 +120,15 @@ class BatchSchemaModifier(object):
         schema['description'].widget.visible = False
         schema['BatchDate'].required = True
         schema['BatchLabels'].widget.visible = False
+        schema['InvoiceContact'].required = True
+        schema['ContainerTemperature'].required = True
         schema['ContainerCondition'].required = True
         schema['ContainerCondition'].vocabulary=['Acceptable', 'Compromised']
         schema['ContainerCondition'].widget=SelectionWidget(
-                format='radio',
-                label=_('Physical Condition'),
-                description = _("If compromised then provide more details below."),
-            )
+            format='radio',
+            label=_('Physical Condition'),
+            description = _("If compromised then provide more details below."),
+        )
         return schema
 
 @indexer(IBatch)
