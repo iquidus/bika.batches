@@ -10,8 +10,6 @@
 
   <includeDependencies package="." />
 
-  <i18n:registerTranslations directory="locales" />
-
   <five:registerPackage package="." initialize=".initialize" />
 
   <include file="permissions.zcml" />
@@ -24,7 +22,4 @@
   <include package=".setupdata"/>
 
   <include file="profiles.zcml" />
-
-  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
-
 </configure>
