@@ -26,7 +26,7 @@ class BatchSchemaExtender(object):
                 label=_('Client Reference'),
             ),
         ),
-        ExtReferenceField('Contact',
+        ExtReferenceField('BContact',
             allowed_types = ('Contact',),
             relationship = 'BatchContact',
            # default_method = 'getContacts',
@@ -46,7 +46,7 @@ class BatchSchemaExtender(object):
                          ],
             ),
         ),
-        ExtReferenceField('InvoiceContact',
+        ExtReferenceField('InvoiceBContact',
             allowed_types = ('Contact',),
             relationship = 'BatchInvoiceContact',
            # default_method = 'getContacts',
@@ -59,10 +59,10 @@ class BatchSchemaExtender(object):
                 visible={'edit': 'visible', 'view': 'visible', 'add': 'visible'},
                 base_query={'inactive_state': 'active'},
                 showOn=True,
-                popup_width='400px',
-                colModel=[{'columnName': 'UID', 'width': '40', 'label': _('UID'), 'hidden': False},
-                          {'columnName': 'Fullname', 'width': '30', 'label': _('Name')},
-                          {'columnName': 'EmailAddress', 'width': '30', 'label': _('Email Address')},
+                popup_width='300px',
+                colModel=[{'columnName': 'UID', 'hidden': True},
+                          {'columnName': 'Fullname', 'width': '50', 'label': _('Name')},
+                          {'columnName': 'EmailAddress', 'width': '50', 'label': _('Email Address')},
                          ],
             ),
         ),
@@ -75,6 +75,7 @@ class BatchSchemaExtender(object):
             widget=TextAreaWidget(
                 label=_('Additional Information'),
                 append_only=False,
+                width=70,
             )
         ),
     ]
@@ -84,8 +85,8 @@ class BatchSchemaExtender(object):
 
     def getOrder(self, schematas):
         default = schematas['default']
-        to_insert = [{'name': 'Contact', 'before': 'ClientBatchID'},
-            {'name': 'InvoiceContact', 'before': 'ClientBatchID'},
+        to_insert = [{'name': 'BContact', 'before': 'ClientBatchID'},
+            {'name': 'InvoiceBContact', 'before': 'ClientBatchID'},
             {'name': 'ClientRef', 'before': 'ClientBatchID'},
             {'name': 'Information', 'before': 'BatchLabels'},
             {'name': 'BatchDate', 'before': 'BatchLabels'}]
@@ -110,8 +111,8 @@ class BatchSchemaModifier(object):
         schema['title'].required = False
         schema['title'].widget.visible = False
         schema['Client'].required = True
-        schema['Contact'].required = True
-        schema['Contact'].widget.visible = True
+        schema['BContact'].required = True
+        schema['BContact'].widget.visible = True
         schema['ClientRef'].required = False
         schema['ClientRef'].widget.visible = True
         schema['InheritedObjects'].widget.visible = False
@@ -120,7 +121,7 @@ class BatchSchemaModifier(object):
         schema['description'].widget.visible = False
         schema['BatchDate'].required = True
         schema['BatchLabels'].widget.visible = False
-        schema['InvoiceContact'].required = True
+        schema['InvoiceBContact'].required = True
         schema['ContainerTemperature'].required = True
         schema['ContainerCondition'].required = True
         schema['ContainerCondition'].vocabulary=['Acceptable', 'Compromised']

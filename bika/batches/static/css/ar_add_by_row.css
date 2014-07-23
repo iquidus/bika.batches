@@ -1,0 +1,44 @@
+/* AR by Row tweaks */
+
+/*rotate copy button */
+.copyButtonByRow {
+    transform: rotate(90deg) !important;
+    -ms-transform: rotate(90deg) !important;
+    -moz-transform: rotate(90deg) !important;
+    -webkit-transform: rotate(90deg) !important;
+    -o-transform: rotate(90deg) !important;
+}
+
+.inputByRow, .analysesByRow, .saveButtonByRow {	
+	margin: 0px 0px !important;
+	padding: 0px 0px !important;
+}
+
+.inputByRow input {
+	width:100px !important;
+	height: 20px !important;
+}
+
+.analysesByRow input {
+	height: 20px;
+}
+
+.tableHeadersByRow {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	width:100px !important;
+}
+
+.saveButtonByRow input {
+	width:100px !important;
+	height: 25px !important;	
+}
+
+.tableHeaderRowByRow {
+    background-color:#EDEDED;
+}
+
+.clientInfoByRow {
+	display:inline-block;
+	margin-right: 10px;
+}

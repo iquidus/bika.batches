@@ -8,9 +8,9 @@
 
   <object name="bika_batches"
           meta_type="Filesystem Directory View"
-          directory="bika.batches:skins/bika_analytica"/>
+          directory="bika.batches:skins/bika_batches"/>
 
-  <skin-path name="Analytica" based-on="Sunburst Theme">
+  <skin-path name="Batches" based-on="Sunburst Theme">
     <layer name="bika_batches" insert-after="custom"/>
   </skin-path>
 

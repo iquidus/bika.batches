@@ -12,4 +12,13 @@
     layer="bika.lims.interfaces.IBikaLIMS"
   />
 
+  <browser:page
+    for="*"
+    name="araddanalyses"
+    class="bika.lims.browser.analysisrequest.araddananlysesview.ARAddAnalysesView"
+    template="ar_add_by_row.pt"
+    permission="zope2.View"
+    layer="bika.lims.interfaces.IBikaLIMS"
+  />
+
 </configure>
