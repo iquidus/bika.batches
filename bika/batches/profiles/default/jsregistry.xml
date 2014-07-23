@@ -2,7 +2,7 @@
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
 
  <javascript authenticated="False"
-              id="++resource++bika.batches.js/utils.js"
+              id="portal_url/++resource++bika.batches.js/add_batch.js"
               cacheable="True"
               compression="safe"
               conditionalcomment=""
@@ -10,6 +10,6 @@
               enabled="on"
               expression=""
               inline="False"
-              insert-after="++resource++bika.lims.js/jquery.json.js"/>
+              insert-after="*"/>
 
 </object>
