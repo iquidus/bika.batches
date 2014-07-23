@@ -23,6 +23,7 @@ setup(name='bika.batches',
           'setuptools',
           'bika.lims',
           'archetypes.schemaextender',
+          'z3c.jbot'
       ],
       extras_require={
           'test': [
