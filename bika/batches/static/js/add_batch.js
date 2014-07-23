@@ -27,6 +27,8 @@ $(document).ready(function() {
     });
 
     $("[id$='BContact']").on("focusin", function() {
+        $(this).val("");
+        $(this).attr("UID", "");
         $("#Client").change();
     });
 });

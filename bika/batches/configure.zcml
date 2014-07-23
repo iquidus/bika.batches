@@ -19,5 +19,11 @@
   <include package=".browser"/>
   <include package=".static"/>
   <include file="profiles.zcml" />
+
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+    directory="templates"
+    layer="bika.lims.interfaces.IBikaLIMS" />
+  
 </configure>
 
