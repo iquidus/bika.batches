@@ -122,13 +122,25 @@ class BatchSchemaModifier(object):
         schema['BatchDate'].required = True
         schema['BatchLabels'].widget.visible = False
         schema['InvoiceBContact'].required = True
-        schema['ContainerTemperature'].required = True
         schema['ContainerCondition'].required = True
-        schema['ContainerCondition'].vocabulary=['Acceptable', 'Compromised']
+        schema['ContainerCondition'].vocabulary=['Sample(s) due','Acceptable','Compromised']
         schema['ContainerCondition'].widget=SelectionWidget(
             format='radio',
             label=_('Physical Condition'),
             description = _("If compromised then provide more details below."),
+        )
+
+        schema['ContainerTemperature'] = ExtStringField(
+        'ContainerTemperature',
+        default_content_type='text/x-web-intelligent',
+        default_output_type="text/plain",
+        widget=SelectionWidget(
+            format='radio',
+            label=_('Temperature on arrival'),
+            description = _("The temperature of the sample container on arrival"),
+        ),
+        vocabulary=['Sample(s) due', 'Frozen', 'Chilled','Ambient'],
+        required = True
         )
         return schema
 
