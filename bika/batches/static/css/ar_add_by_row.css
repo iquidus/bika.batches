@@ -49,3 +49,11 @@
     display: none !important;
 }
 
+td.Method {
+    display: none !important;
+}
+
+td.Instrument {  
+    display: none !important;
+}
+
