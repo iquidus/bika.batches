@@ -42,3 +42,10 @@
 	display:inline-block;
 	margin-right: 10px;
 }
+
+/* Worksheet - manage result tweaks */
+
+#foldercontents-Method-column, #foldercontents-Instrument-column {
+    display: none !important;
+}
+
