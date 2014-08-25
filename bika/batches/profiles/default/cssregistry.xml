@@ -2,7 +2,7 @@
 <object name="portal_css">
 
 <stylesheet
-    id="portal_url/++resource++bika.batches.css/ar_add_by_row.css"
+    id="portal_url/++resource++bika.batches.css/al_worksheets.css"
     media="screen"
     rel="stylesheet"
     rendering="link"

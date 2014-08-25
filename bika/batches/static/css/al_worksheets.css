@@ -1,0 +1,13 @@
+/* Worksheet - manage result tweaks */
+
+#foldercontents-Method-column, #foldercontents-Instrument-column {
+    display: none !important;
+}
+
+td.Method {
+    display: none !important;
+}
+
+td.Instrument {  
+    display: none !important;
+}

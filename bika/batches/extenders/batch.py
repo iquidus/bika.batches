@@ -89,7 +89,8 @@ class BatchSchemaExtender(object):
             {'name': 'InvoiceBContact', 'before': 'ClientBatchID'},
             {'name': 'ClientRef', 'before': 'ClientBatchID'},
             {'name': 'Information', 'before': 'BatchLabels'},
-            {'name': 'BatchDate', 'before': 'BatchLabels'}]
+            {'name': 'BatchDate', 'before': 'BatchLabels'},
+            {'name': 'Client', 'before': 'BContact'}]
         for field in to_insert:
             name = field['name']
             if name in default:
