@@ -16,4 +16,7 @@
     <adapter
         name='bika.batches'
         factory=".batch.BatchSchemaModifier" />
+    <adapter
+        name='bika.batches'
+        factory=".client.ClientSchemaExtender" />
 </configure>
