@@ -20,13 +20,13 @@ function applyComboFilter(element, filterkey, filtervalue) {
 $(document).ready(function() {
     $("#Client").on("change", function() {
         var clientuid = $(this).attr("uid");
-        var element = $("#Contact");
+        var element = $("#BContact");
         applyComboFilter(element, "getParentUID", clientuid);
-        element = $("#InvoiceContact");
+        element = $("#InvoiceBContact");
         applyComboFilter(element, "getParentUID", clientuid);
     });
 
-    $("[id$='Contact']").on("focusin", function() {
+    $("[id$='BContact']").on("focusin", function() {
         $(this).val("");
         $(this).attr("UID", "");
         $("#Client").change();
