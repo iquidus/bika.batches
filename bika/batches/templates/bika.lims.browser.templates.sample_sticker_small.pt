@@ -40,7 +40,6 @@
     SampleType   python:sample.getSampleType().Title();
     Sampler      python:sample.getSampler();
     SampleID     python:sample.getId();
-    BatchID      python:context.getBatch().Title();
     SampleType   python:sample.getSampleType().Title();
     SamplePoint  python:sample.getSamplePoint() and sample.getSamplePoint().Title() or '';
     Preservation python:part.getPreservation() and part.getPreservation().Title() or '';
@@ -58,8 +57,8 @@
         <img tal:condition="python:sample.getSampleType().getHazardous()"
              tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
     </td>
-    <td>
-        <h2 tal:content="BatchID"/>
+    <td tal:condition="python:context.portal_type == 'AnalysisRequest'">
+        <h2 tal:define="BatchID python:context.getBatch().Title()" tal:content="BatchID"/>
     </td>
 </tr>
 
