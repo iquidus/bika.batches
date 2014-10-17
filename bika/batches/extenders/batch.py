@@ -19,53 +19,6 @@ class BatchSchemaExtender(object):
     implements(IOrderableSchemaExtender)
 
     fields = [
-        ExtStringField(
-            'ClientRef',
-            required=True,
-            widget=StringWidget(
-                label=_('Client Reference'),
-            ),
-        ),
-        ExtReferenceField('BContact',
-            allowed_types = ('Contact',),
-            relationship = 'BatchContact',
-           # default_method = 'getContacts',
-            referenceClass = HoldingReference,
-            vocabulary_display_path_bound = sys.maxint,
-            widget=ReferenceWidget(
-                label=_("Contact"),
-                size=30,
-                helper_js=("bika_widgets/referencewidget.js", "++resource++bika.lims.js/contact.js"),
-                visible={'edit': 'visible', 'view': 'visible', 'add': 'visible'},
-                base_query={'inactive_state': 'active'},
-                showOn=True,
-                popup_width='300px',
-                colModel=[{'columnName': 'UID', 'hidden': True},
-                          {'columnName': 'Fullname', 'width': '50', 'label': _('Name')},
-                          {'columnName': 'EmailAddress', 'width': '50', 'label': _('Email Address')},
-                         ],
-            ),
-        ),
-        ExtReferenceField('InvoiceBContact',
-            allowed_types = ('Contact',),
-            relationship = 'BatchInvoiceContact',
-           # default_method = 'getContacts',
-            referenceClass = HoldingReference,
-            vocabulary_display_path_bound = sys.maxint,
-            widget=ReferenceWidget(
-                label=_("Invoice to"),
-                size=30,
-                helper_js=("bika_widgets/referencewidget.js", "++resource++bika.lims.js/contact.js"),
-                visible={'edit': 'visible', 'view': 'visible', 'add': 'visible'},
-                base_query={'inactive_state': 'active'},
-                showOn=True,
-                popup_width='300px',
-                colModel=[{'columnName': 'UID', 'hidden': True},
-                          {'columnName': 'Fullname', 'width': '50', 'label': _('Name')},
-                          {'columnName': 'EmailAddress', 'width': '50', 'label': _('Email Address')},
-                         ],
-            ),
-        ),
         ExtTextField(
             'Information',
             searchable=True,
@@ -85,12 +38,12 @@ class BatchSchemaExtender(object):
 
     def getOrder(self, schematas):
         default = schematas['default']
-        to_insert = [{'name': 'BContact', 'before': 'ClientBatchID'},
-            {'name': 'InvoiceBContact', 'before': 'ClientBatchID'},
-            {'name': 'ClientRef', 'before': 'ClientBatchID'},
+        to_insert = [{'name': 'Contact', 'before': 'ClientBatchID'},
+            {'name': 'InvoiceContact', 'before': 'ClientBatchID'},
+            {'name': 'CCContact', 'before': 'InvoiceContact'},
+            {'name': 'CCEmails', 'before': 'InvoiceContact'},
             {'name': 'Information', 'before': 'BatchLabels'},
-            {'name': 'BatchDate', 'before': 'BatchLabels'},
-            {'name': 'Client', 'before': 'BContact'}]
+            {'name': 'BatchDate', 'before': 'BatchLabels'}]
         for field in to_insert:
             name = field['name']
             if name in default:
@@ -112,37 +65,45 @@ class BatchSchemaModifier(object):
         schema['title'].required = False
         schema['title'].widget.visible = False
         schema['Client'].required = True
-        schema['BContact'].required = True
-        schema['BContact'].widget.visible = True
-        schema['ClientRef'].required = False
-        schema['ClientRef'].widget.visible = True
+        schema['Contact'].required = True
+        schema['Contact'].widget.visible = True
         schema['InheritedObjects'].widget.visible = False
         schema['InheritedObjectsUI'].widget.visible = False
         schema['description'].required = False
         schema['description'].widget.visible = False
         schema['BatchDate'].required = True
         schema['BatchLabels'].widget.visible = False
-        schema['InvoiceBContact'].required = True
-        schema['ContainerCondition'].required = True
-        schema['ContainerCondition'].vocabulary=['Sample(s) due','Acceptable','Compromised']
-        schema['ContainerCondition'].widget=SelectionWidget(
-            format='radio',
-            label=_('Physical Condition'),
-            description = _("If compromised then provide more details below."),
-        )
+        schema['InvoiceContact'].required = True
+        schema['BatchLabels'].widget.visible = False
+        schema['BatchLabels'].widget.visible = False
+        schema['BatchLabels'].widget.visible = False
+        schema['BatchLabels'].widget.visible = False
+        schema['BatchLabels'].widget.visible = False
+        
+        # schema['ContainerCondition'].required = True
+        # schema['ContainerCondition'].vocabulary=['Sample(s) due','Acceptable','Compromised']
+        # schema['ContainerCondition'].widget=SelectionWidget(
+        #     format='radio',
+        #     label=_('Physical Condition'),
+        #     description = _("If compromised then provide more details below."),
+        # )
 
-        schema['ContainerTemperature'] = ExtStringField(
-        'ContainerTemperature',
-        default_content_type='text/x-web-intelligent',
-        default_output_type="text/plain",
-        widget=SelectionWidget(
-            format='radio',
-            label=_('Temperature on arrival'),
-            description = _("The temperature of the sample container on arrival"),
-        ),
-        vocabulary=['Sample(s) due', 'Frozen', 'Chilled','Ambient'],
-        required = True
-        )
+        # schema['ContainerTemperature'] = ExtStringField(
+        # 'ContainerTemperature',
+        # default_content_type='text/x-web-intelligent',
+        # default_output_type="text/plain",
+        # widget=SelectionWidget(
+        #     format='radio',
+        #     label=_('Temperature on arrival'),
+        #     description = _("The temperature of the sample container on arrival"),
+        # ),
+        # vocabulary=['Sample(s) due', 'Frozen', 'Chilled','Ambient'],
+        # required = True
+        # )
+        #schema['ContainerCondition'].widget.visible = False
+        #schema['ContainerTemperature'].widget.visible = False
+        schema['Analysts'].widget.visible = False
+        schema['LeadAnalyst'].widget.visible = False
         return schema
 
 @indexer(IBatch)
