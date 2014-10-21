@@ -53,12 +53,9 @@
     ">
 <tr>
     <td>
-        <h2 style="margin-left:10px" tal:content="string:${smart_id}"/>
+        <strong style="font-size:18px;margin-left:10px" tal:content="string:${smart_id}"/>
         <img tal:condition="python:sample.getSampleType().getHazardous()"
              tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
-    </td>
-    <td tal:condition="python:context.portal_type == 'AnalysisRequest'">
-        <h2 tal:define="BatchID python:context.getBatch().Title()" tal:content="BatchID"/>
     </td>
 </tr>
 

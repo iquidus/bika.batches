@@ -44,11 +44,23 @@ class BatchSchemaExtender(object):
             {'name': 'CCEmails', 'before': 'InvoiceContact'},
             {'name': 'Information', 'before': 'BatchLabels'},
             {'name': 'BatchDate', 'before': 'BatchLabels'}]
+        
         for field in to_insert:
             name = field['name']
             if name in default:
                 default.remove(name)
             default.insert(default.index(field['before']), name)
+
+        arsf = schematas['AnalysisRequest and Sample Fields']
+        to_insert = [{'name': 'BioHazardous', 'before': 'ReturnSampleToClient'},
+            {'name' : 'Priority', 'before': 'StorageLocation'},
+            {'name': 'DefaultContainerType', 'before': 'StorageLocation'}]
+        
+        for field in to_insert:
+            name = field['name']
+            if name in arsf:
+                arsf.remove(name)
+            arsf.insert(arsf.index(field['before']), name)
         return schematas
 
     def getFields(self):
@@ -74,11 +86,15 @@ class BatchSchemaModifier(object):
         schema['BatchDate'].required = True
         schema['BatchLabels'].widget.visible = False
         schema['InvoiceContact'].required = True
-        schema['BatchLabels'].widget.visible = False
-        schema['BatchLabels'].widget.visible = False
-        schema['BatchLabels'].widget.visible = False
-        schema['BatchLabels'].widget.visible = False
-        schema['BatchLabels'].widget.visible = False
+        schema['Instruments'].widget.visible = False
+        schema['Methods'].widget.visible = False
+        schema['SamplingDeviation'].widget.visible = False
+        schema['PreparationWorkflow'].widget.visible = False
+        schema['Sampler'].widget.visible = False
+        schema['SampleMatrix'].widget.visible = False
+        schema['SamplePoint'].widget.visible = False
+        schema['DateSampled'].widget.visible = False
+        schema['SamplingDate'].required = False
         
         # schema['ContainerCondition'].required = True
         # schema['ContainerCondition'].vocabulary=['Sample(s) due','Acceptable','Compromised']

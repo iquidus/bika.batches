@@ -53,14 +53,14 @@
     ">
 <tr>
     <td>
-        <strong style="font-size:24px;" style="margin-left:10px" tal:content="string:${smart_id}"/>
+        <strong style="font-size:24px;margin-left:10px;" tal:content="string:${smart_id}"/>
         <img tal:condition="python:sample.getSampleType().getHazardous()"
-             tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
+             tal:attributes="src string:${portal_url}/++resource++bika.lims.images/ar.png"/>
     </td>
 </tr>
 <tr>    
-    <td tal:condition="python:context.portal_type == 'AnalysisRequest'">
-        <strong style="font-size:20px;" tal:define="BatchID python:context.getBatch().Title()" tal:content="BatchID"/>
+    <td tal:condition="python:context.getBatch()">
+        <strong style="font-size:20px;margin-left:10px;" tal:define="BatchID python:context.getBatch().Title()" tal:content="BatchID"/>
     </td>
 </tr>
 
