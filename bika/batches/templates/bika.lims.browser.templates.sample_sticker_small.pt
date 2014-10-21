@@ -57,9 +57,10 @@
         <img tal:condition="python:sample.getSampleType().getHazardous()"
              tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
     </td>
+    <td tal:condition="python:context.getBatch()">
+        <strong style="font-size:18px;margin-left:10px;" tal:define="BatchID python:context.getBatch().Title()" tal:content="BatchID"/>
+    </td>
 </tr>
-
-
 
 <tr>
     <td class='barcode' colspan="2">
