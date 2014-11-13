@@ -51,20 +51,18 @@
     field_analyses python:[analysis for analysis in analyses if analysis.getService().getPointOfCapture()=='field'];
     smart_id     python:sample.getId();
     ">
-<tr>
-    <td>
-        <strong style="font-size:24px;margin-left:10px;" tal:content="string:${smart_id}"/>
-        <img tal:condition="python:sample.getSampleType().getHazardous()"
-             tal:attributes="src string:${portal_url}/++resource++bika.lims.images/ar.png"/>
-    </td>
-</tr>
+
 <tr>    
     <td tal:condition="python:context.getBatch()">
         <strong style="font-size:20px;margin-left:10px;" tal:define="BatchID python:context.getBatch().Title()" tal:content="BatchID"/>
     </td>
+
+    <td>
+        <strong style="font-size:18px;margin-left:10px" tal:content="string:${smart_id}"/>
+        <img tal:condition="python:sample.getSampleType().getHazardous()"
+             tal:attributes="src string:${portal_url}/++resource++bika.lims.images/hazardous.png"/>
+    </td>
 </tr>
-
-
 
 <tr>
     <td class='barcode' colspan="2">
