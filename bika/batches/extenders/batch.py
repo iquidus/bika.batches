@@ -94,8 +94,13 @@ class BatchSchemaModifier(object):
         schema['SampleMatrix'].widget.visible = False
         schema['SamplePoint'].widget.visible = False
         schema['DateSampled'].widget.visible = False
-        schema['SamplingDate'].required = False
-        
+        schema['Template'].widget.visible = False
+        schema['Specification'].widget.visible = False
+        schema['SamplingDate'].required = True
+        schema['Priority'].required = True
+        schema['SampleType'].required = True
+        schema['Profile'].required = True
+        schema['SampleCondition'].required = True
         # schema['ContainerCondition'].required = True
         # schema['ContainerCondition'].vocabulary=['Sample(s) due','Acceptable','Compromised']
         # schema['ContainerCondition'].widget=SelectionWidget(
